@@ -1,7 +1,8 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-import '../models/recipe_model.dart';
+import '../../data/models/recipe_model.dart';
 
 class RecipeOfTheDayScreen extends StatefulWidget {
   const RecipeOfTheDayScreen({Key? key}) : super(key: key);
@@ -13,22 +14,22 @@ class RecipeOfTheDayScreen extends StatefulWidget {
 class _RecipeOfTheDayScreenState extends State<RecipeOfTheDayScreen> {
   final List<RecipeModel> recipes = [
     RecipeModel(
-      name: 'Alfredo pasta',
-      ingredients: 'Pasta, tomato sauce',
-      time: '30 min',
-      steps: 'Boil pasta, cook sauce',
-      image: 'assets/images/alfredo-pasta.jpg',
-      cuisine: 'Italian',
-      description: '',
+      'Alfredo pasta',
+      'Pasta, tomato sauce',
+      '30 min',
+      'Boil pasta, cook sauce',
+      'assets/images/alfredo-pasta.jpg',
+      'Italian',
+      '',
     ),
     RecipeModel(
-      name: 'Pizza',
-      ingredients: 'Dough, cheese, tomato sauce',
-      time: '20 min',
-      steps: 'Bake pizza',
-      image: 'assets/images/pizza.jpg',
-      cuisine: 'Italian',
-      description: '',
+      'Pizza',
+      'Dough, cheese, tomato sauce',
+      '20 min',
+      'Bake pizza',
+      'assets/images/pizza.jpg',
+      'Italian',
+      '',
     ),
   ];
 
@@ -54,13 +55,11 @@ class _RecipeOfTheDayScreenState extends State<RecipeOfTheDayScreen> {
             fit: BoxFit.cover,
           ),
           const SizedBox(height: 20),
-
           Text(
             randomRecipe.name,
             style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),
-
           Text(
             'Ingredients: ${randomRecipe.ingredients}',
             style: const TextStyle(fontSize: 18),
@@ -72,7 +71,6 @@ class _RecipeOfTheDayScreenState extends State<RecipeOfTheDayScreen> {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 10),
-
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
@@ -82,7 +80,6 @@ class _RecipeOfTheDayScreenState extends State<RecipeOfTheDayScreen> {
             ),
           ),
           const SizedBox(height: 20),
-
           ElevatedButton(
             onPressed: () {
               setState(() {

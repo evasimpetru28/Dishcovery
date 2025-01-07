@@ -1,36 +1,37 @@
-import 'package:dishcovery/navigator/recipe_details_screen.dart';
+import 'package:dishcovery/ui/recipe/recipe_bloc.dart';
+import 'package:dishcovery/ui/recipe_details_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../models/recipe_model.dart';
+import '../../data/models/recipe_model.dart';
+import '../../utils/service_locator.dart';
 
 List<RecipeModel> sampleRecipes = [
   RecipeModel(
-    name: 'Spaghetti Carbonara',
-    cuisine: 'Italian',
-    description:
-        'A classic Italian pasta dish with eggs, cheese, pancetta, and pepper.',
-    image: 'assets/images/carbonara.jpeg',
-    ingredients: '',
-    time: '',
-    steps: '',
+    'Spaghetti Carbonara',
+    'Italian',
+    'A classic Italian pasta dish with eggs, cheese, pancetta, and pepper.',
+    'assets/images/carbonara.jpeg',
+    '',
+    '',
+    '',
   ),
   RecipeModel(
-    name: 'Butter Chicken',
-    cuisine: 'Indian',
-    description: 'A rich and creamy chicken curry from India.',
-    image: 'assets/images/butter-chicken.jpg',
-    ingredients: '',
-    time: '',
-    steps: '',
+    'Butter Chicken',
+    'Indian',
+    'A rich and creamy chicken curry from India.',
+    'assets/images/butter-chicken.jpg',
+    'assets/images/butter-chicken.jpg',
+    '',
+    '',
   ),
   RecipeModel(
-    name: 'Tacos',
-    cuisine: 'Mexican',
-    description: 'A traditional Mexican dish with various fillings.',
-    image: 'assets/images/tacos.jpg',
-    ingredients: '',
-    time: '',
-    steps: '',
+    'Tacos',
+    'Mexican',
+    'A traditional Mexican dish with various fillings.',
+    'assets/images/tacos.jpg',
+    '',
+    '',
+    '',
   ),
 ];
 
@@ -45,11 +46,19 @@ class _RecipesScreenState extends State<RecipesScreen> {
 
   List<RecipeModel> recipes = sampleRecipes;
   List<RecipeModel> filteredRecipes = [];
+  final RecipeBloc bloc = serviceLocator<RecipeBloc>();
 
   @override
   void initState() {
-    super.initState();
+    bloc.getRecipeList();
+    print("AAAAAAAAAAAAAAAAAAAAAAAA");
+    print(bloc.recipeListStream.first);
+    bloc.error.listen((event) {
+      print("EROARE");
+      // showErrorDialog(context, AppLocalizations.of(context)!.error, event);
+    });
     filteredRecipes = recipes;
+    super.initState();
   }
 
   void filterRecipes() {
@@ -125,8 +134,8 @@ class _RecipesScreenState extends State<RecipesScreen> {
                     child: ListTile(
                       leading: Image.asset(
                         recipe.image,
-                        width: 50,
-                        height: 50,
+                        width: 80,
+                        height: 80,
                         fit: BoxFit.cover,
                       ),
                       title: Text(recipe.name),

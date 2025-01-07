@@ -1,10 +1,11 @@
+import 'package:dishcovery/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'navigator/home_screen.dart';
-import 'navigator/recipe_of_the_day_screen.dart';
-import 'navigator/recipes_screen.dart';
-import 'splash_screen.dart';
+import 'ui/navigator/home_screen.dart';
+import 'ui/navigator/recipe_of_the_day_screen.dart';
+import 'ui/recipe/recipes_screen.dart';
+import 'ui/splash_screen.dart';
 
 Map<int, Color> _myCustomColor = {
   50: const Color(0x1affd6b38b),
@@ -19,7 +20,8 @@ Map<int, Color> _myCustomColor = {
   900: const Color(0x4dffd6b38b),
 };
 
-void main() {
+Future<void> main() async {
+  setupServiceLocator();
   runApp(const MyApp());
 }
 
