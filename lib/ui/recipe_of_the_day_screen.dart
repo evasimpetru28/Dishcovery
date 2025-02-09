@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../../data/models/recipe_model.dart';
+import '../data/models/recipe_model.dart';
 
 class RecipeOfTheDayScreen extends StatefulWidget {
   const RecipeOfTheDayScreen({Key? key}) : super(key: key);

@@ -1,10 +1,10 @@
-import 'package:dishcovery/utils/service_locator.dart';
+import 'package:dishcovery/ui/ingredient_catalogue_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'ui/navigator/home_screen.dart';
-import 'ui/navigator/recipe_of_the_day_screen.dart';
-import 'ui/recipe/recipes_screen.dart';
+import 'ui/home_screen.dart';
+import 'ui/recipe_of_the_day_screen.dart';
+import 'ui/recipes_screen.dart';
 import 'ui/splash_screen.dart';
 
 Map<int, Color> _myCustomColor = {
@@ -21,7 +21,7 @@ Map<int, Color> _myCustomColor = {
 };
 
 Future<void> main() async {
-  setupServiceLocator();
+  // setupServiceLocator();
   runApp(const MyApp());
 }
 
@@ -46,6 +46,8 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: {
         '/home': (context) => const HomePage(),
+        '/recipes': (context) => RecipesScreen(),
+        '/ingredient-catalog': (context) => const IngredientCatalogueScreen(),
       },
     );
   }
@@ -62,9 +64,9 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static final List<Widget> _pages = [
     const HomeScreen(),
-    RecipeOfTheDayScreen(),
+    const RecipeOfTheDayScreen(),
     RecipesScreen(),
-    RecipesScreen(),
+    const IngredientCatalogueScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -80,7 +82,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.house),
             label: "Home",
             backgroundColor: Color(0xFFD6B38B),
           ),
@@ -95,8 +97,8 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Color(0xFFD6B38B),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: "Ingredient Search",
+            icon: Icon(Icons.inventory),
+            label: "Ingredient Catalogue",
             backgroundColor: Color(0xFFD6B38B),
           ),
         ],
